@@ -48,3 +48,41 @@ void searchStudent() {
     }
     printf("Student not found.\n");
 }
+
+void updateStudent() {
+    int id;
+    printf("Enter ID to update: ");
+    scanf("%d", &id);
+
+    for (int i = 0; i < studentCount; i++) {
+        if (students[i].id == id) {
+            printf("Enter new Name: ");
+            scanf(" %[^\n]", students[i].name);
+            printf("Enter new Grade: ");
+            scanf("%f", &students[i].grade);
+            printf("Student updates\n");
+            return;
+        }
+    }
+}
+
+void deleteStudent() {
+    int id;
+    printf("Enter ID to delete: ");
+    scanf("%d", &id);
+
+    for (int i = 0; i < studentCount; i++) {
+        if (students[i].id == id) {
+            for (int j = i; j < studentCount - 1; j++) {
+                students[j] = students[j + 1];
+            }
+            studentCount--;
+            printf("Student deleted\n");
+            return;
+        } else {
+            if (i == studentCount - 1) {
+                printf("Student not found.\n");
+            }
+        }
+    }
+}
